@@ -10,7 +10,7 @@
         public string Website {  get; set; } = string.Empty;
 
 
-        public Adress Adress { get; set; } = new();
+        public Address Address { get; set; } = new();
         public Company Company { get; set; } = new();
 
 
