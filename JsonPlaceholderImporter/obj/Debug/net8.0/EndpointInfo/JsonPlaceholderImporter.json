@@ -1114,6 +1114,18 @@
           }
         }
       }
+    },
+    "/api/import/users": {
+      "post": {
+        "tags": [
+          "UsersImport"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

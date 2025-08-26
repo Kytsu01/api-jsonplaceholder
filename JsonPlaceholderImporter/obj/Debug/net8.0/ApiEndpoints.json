@@ -218,6 +218,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "JsonPlaceholderImporter.Controllers.Imports.UsersImportController",
+    "Method": "Import",
+    "RelativePath": "api/import/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "JsonPlaceholderImporter.Controllers.PhotosController",
     "Method": "GetPhotos",
     "RelativePath": "api/Photos",
