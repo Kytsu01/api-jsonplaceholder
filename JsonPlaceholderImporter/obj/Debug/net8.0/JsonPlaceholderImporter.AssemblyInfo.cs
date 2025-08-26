@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JsonPlaceholderImporter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+370fa4253b1e5441dfac33881b0f40654920b5d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2d1879b9d7bbb86e1b089dbc6d46cb07b21f86e")]
 [assembly: System.Reflection.AssemblyProductAttribute("JsonPlaceholderImporter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JsonPlaceholderImporter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

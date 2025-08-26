@@ -375,6 +375,18 @@
         }
       }
     },
+    "/api/import/comments": {
+      "post": {
+        "tags": [
+          "CommentsImport"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Photos": {
       "get": {
         "tags": [
