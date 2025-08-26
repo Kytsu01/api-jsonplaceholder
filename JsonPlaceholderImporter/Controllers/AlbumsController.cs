@@ -25,14 +25,15 @@ namespace JsonPlaceholderImporter.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-            return await _context.Albums.ToListAsync();
+            return await _context.Albums.Include(a => a.Photos).ToListAsync();
         }
 
         // GET: api/Albums/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Album>> GetAlbum(int id)
         {
-            var album = await _context.Albums.FindAsync(id);
+            var album = await _context.Albums.Include(a => a.Photos)
+                        .FirstOrDefaultAsync(a => a.Id == id);
 
             if (album == null)
             {

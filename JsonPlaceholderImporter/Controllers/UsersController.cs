@@ -25,14 +25,22 @@ namespace JsonPlaceholderImporter.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(u => u.Address).ThenInclude(a => a.Geo)
+                .Include(u => u.Company).Include(u => u.Posts)
+                .Include(u => u.Albums).ThenInclude(a => a.Photos)
+                .Include(u => u.Todos).ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.Include(u => u.Company)
+                       .Include(u => u.Address).ThenInclude(a => a.Geo)
+                       .Include(u => u.Albums).ThenInclude(a => a.Photos)
+                       .Include(u => u.Posts).Include(u => u.Todos)
+                       .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
             {
@@ -88,13 +96,43 @@ namespace JsonPlaceholderImporter.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Include(u => u.Address).ThenInclude(a => a.Geo)
+                .Include(u => u.Company).Include(u => u.Posts)
+                .Include(u => u.Albums).ThenInclude(u => u.Photos)
+                .Include(u => u.Todos).FirstOrDefaultAsync(u => u.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
 
+            var address = await _context.Adresses.FindAsync(user.Address.Id);
+            var geo = await _context.Geolocations.FindAsync(address.Geo.Id);
+            var company = await _context.Companies.FindAsync(user.Company.Id);
+
             _context.Users.Remove(user);
+
+            try
+            {
+                if (geo != null)
+                {
+                    _context.Geolocations.Remove(geo);
+                }
+
+                if (address != null)
+                {
+                    _context.Adresses.Remove(address);
+                }
+
+                if (company != null)
+                {
+                    _context.Companies.Remove(company);
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine($"Falha ao remover as entidades relacionada ao usuario: {ex}");
+            }
+
             await _context.SaveChangesAsync();
 
             return NoContent();

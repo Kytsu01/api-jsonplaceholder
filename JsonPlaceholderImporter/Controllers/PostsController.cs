@@ -25,14 +25,14 @@ namespace JsonPlaceholderImporter.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
-            return await _context.Posts.ToListAsync();
+            return await _context.Posts.Include(p => p.Comments).ToListAsync();
         }
 
         // GET: api/Posts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
-            var post = await _context.Posts.FindAsync(id);
+            var post = await _context.Posts.Include(p => p.Comments).FirstOrDefaultAsync(p => p.Id == id);
 
             if (post == null)
             {
