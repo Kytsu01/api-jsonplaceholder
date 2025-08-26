@@ -745,6 +745,18 @@
         }
       }
     },
+    "/api/import/posts": {
+      "post": {
+        "tags": [
+          "PostsImporter"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Todos": {
       "get": {
         "tags": [
