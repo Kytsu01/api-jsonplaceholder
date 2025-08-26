@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36212.18 d17.14
+VisualStudioVersion = 17.14.36212.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPlaceholderImporter", "..\..\TesteVagas\API\JsonPlaceholderImporter\JsonPlaceholderImporter\JsonPlaceholderImporter.csproj", "{8609CA4C-D395-4133-A8A6-6A6E9736197F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPlaceholderImporter", "JsonPlaceholderImporter\JsonPlaceholderImporter.csproj", "{479D97B8-C249-5CA1-3B13-A1F584049E67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8609CA4C-D395-4133-A8A6-6A6E9736197F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8609CA4C-D395-4133-A8A6-6A6E9736197F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8609CA4C-D395-4133-A8A6-6A6E9736197F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8609CA4C-D395-4133-A8A6-6A6E9736197F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{479D97B8-C249-5CA1-3B13-A1F584049E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479D97B8-C249-5CA1-3B13-A1F584049E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479D97B8-C249-5CA1-3B13-A1F584049E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479D97B8-C249-5CA1-3B13-A1F584049E67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
