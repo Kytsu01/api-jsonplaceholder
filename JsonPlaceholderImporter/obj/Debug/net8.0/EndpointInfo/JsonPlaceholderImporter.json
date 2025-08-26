@@ -1276,11 +1276,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "name": {
+          "title": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "body": {
             "type": "string",
             "nullable": true
           },
