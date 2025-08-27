@@ -38,10 +38,13 @@ namespace JsonPlaceholderImporter.Controllers.Imports
 
             foreach(var todo in todos)
             {
+
+                var title = todo.Title.Trim() ?? "";
+
                 var entity = new Todo
                 {
                     UserId = todo.UserId,
-                    Title = todo.Title ?? string.Empty,
+                    Title = title,
                     Completed = todo.Completed
                 };
 

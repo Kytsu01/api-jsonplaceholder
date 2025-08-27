@@ -35,10 +35,15 @@ namespace JsonPlaceholderImporter.Controllers.Imports
 
             foreach (var post in posts)
             {
+
+                var title = post.Title.Trim() ?? "";
+                var body = post.Body.Trim() ?? "";
+
+
                 var entity = new Post
                 {
-                    Title = post.Title ?? string.Empty,
-                    Body = post.Body ?? string.Empty,
+                    Title = title,
+                    Body = body,
                     UserId = post.UserId
                 };
 

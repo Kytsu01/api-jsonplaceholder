@@ -37,12 +37,17 @@ namespace JsonPlaceholderImporter.Controllers.Imports
 
             foreach(var photo in photos)
             {
+
+                var title = photo.Title.Trim() ?? "";
+                var urlPhoto = photo.Url.Trim().ToLower() ?? "";
+                var thumbnailUrl = photo.ThumbnailUrl.Trim().ToLower() ?? "";
+
                 var entity = new Photo
                 {
                     AlbumId = photo.AlbumId,
-                    Title = photo.Title ?? string.Empty,
-                    Url = photo.Url ?? string.Empty,
-                    ThumbnailUrl = photo.ThumbnailUrl ?? string.Empty
+                    Title = title,
+                    Url = urlPhoto,
+                    ThumbnailUrl = thumbnailUrl
                 };
 
                 _context.Photos.Add(entity);

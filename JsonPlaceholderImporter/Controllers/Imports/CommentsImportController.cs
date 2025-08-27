@@ -35,12 +35,17 @@ namespace JsonPlaceholderImporter.Controllers.Imports
 
             foreach(var comment in comments)
             {
+
+                var name = comment.Name.Trim() ?? "";
+                var email = comment.Email.Trim().ToLower() ?? "";
+                var body = comment.Body.Trim() ?? "";
+
                 var entity = new Comment
                 {
                     PostId = comment.PostId,
-                    Name = comment.Name ?? string.Empty,
-                    Email = comment.Email ?? string.Empty,
-                    Body = comment.Body ?? string.Empty
+                    Name = name,
+                    Email = email,
+                    Body = body
                 };
 
                 _context.Comments.Add(entity);

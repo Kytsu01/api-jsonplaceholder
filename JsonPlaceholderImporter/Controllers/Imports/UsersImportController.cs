@@ -6,7 +6,8 @@ using System.Text.Json;
 using JsonPlaceholderImporter.Models;
 using System.Security.Policy;
 using System.Runtime;
-
+using System;
+using System.Linq.Expressions;
 
 namespace JsonPlaceholderImporter.Controllers.Imports
 {
@@ -38,13 +39,27 @@ namespace JsonPlaceholderImporter.Controllers.Imports
 
             foreach (var user in users) 
             {
+
+                var email = (user.Email ?? "").Trim().ToLower();
+                var name = (user.Name ?? "").Trim();
+                var username = (user.Username ?? "").Trim();
+                var website = (user.Website ?? "").Trim().ToLower();
+
+                var isValid = new System.ComponentModel.DataAnnotations.EmailAddressAttribute().IsValid(email);
+
+                if(!isValid)
+                {
+                    return BadRequest(new { error = $"E-mail inválido {email}"});
+
+                }
+
                 var entity = new User
                 {
-                    Name = user.Name ?? string.Empty,
-                    UserName = user.Username ?? string.Empty,
-                    Email = user.Email ?? string.Empty,
+                    Name = name,
+                    UserName = username,
+                    Email = email,
                     Phone = user.Phone ?? string.Empty,
-                    Website = user.Website ?? string.Empty
+                    Website = website
                 };
 
                 if(user.Address != null)
@@ -90,6 +105,7 @@ namespace JsonPlaceholderImporter.Controllers.Imports
             return Ok(new { added });
 
         }
+
     }
 
     internal class ApiUser

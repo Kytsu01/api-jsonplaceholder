@@ -36,10 +36,13 @@ namespace JsonPlaceholderImporter.Controllers.Imports
 
             foreach(var album in albums)
             {
+
+                var title = album.Title.Trim() ?? "";
+
                 var entity = new Album
                 {
                     UserId = album.UserId,
-                    Title = album.Title ?? string.Empty
+                    Title = title
                 };
 
                 _context.Albums.Add(entity);
