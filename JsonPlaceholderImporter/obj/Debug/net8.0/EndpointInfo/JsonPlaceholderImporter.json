@@ -456,17 +456,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/PhotoCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/PhotoCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/PhotoCreateDto"
               }
             }
           }
@@ -1442,6 +1442,28 @@
           },
           "album": {
             "$ref": "#/components/schemas/Album"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PhotoCreateDto": {
+        "type": "object",
+        "properties": {
+          "albumId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

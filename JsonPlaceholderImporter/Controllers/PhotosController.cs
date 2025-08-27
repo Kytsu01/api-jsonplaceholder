@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JsonPlaceholderImporter.Context;
 using JsonPlaceholderImporter.Models;
+using JsonPlaceholderImporter.Dtos;
+using System.Reflection;
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace JsonPlaceholderImporter.Controllers
 {
@@ -76,8 +79,21 @@ namespace JsonPlaceholderImporter.Controllers
         // POST: api/Photos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Photo>> PostPhoto(Photo photo)
+        public async Task<ActionResult<Photo>> PostPhoto(PhotoCreateDto dtoPhoto)
         {
+
+            var title = (dtoPhoto.Title ?? "").Trim();
+            var url = (dtoPhoto.Url ?? "").Trim().ToLower();
+            var thumbnailUrl = (dtoPhoto.ThumbnailUrl ?? "").Trim().ToLower();
+
+            var photo = new Photo
+            {
+                AlbumId = dtoPhoto.AlbumId,
+                Title = title,
+                Url = url,
+                ThumbnailUrl = thumbnailUrl
+            };
+
             _context.Photos.Add(photo);
             await _context.SaveChangesAsync();
 

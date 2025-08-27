@@ -306,8 +306,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "photo",
-        "Type": "JsonPlaceholderImporter.Models.Photo",
+        "Name": "dtoPhoto",
+        "Type": "JsonPlaceholderImporter.Dtos.PhotoCreateDto",
         "IsRequired": true
       }
     ],
