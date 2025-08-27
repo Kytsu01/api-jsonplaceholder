@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JsonPlaceholderImporter.Context;
 using JsonPlaceholderImporter.Models;
+using JsonPlaceholderImporter.Dtos;
 
 namespace JsonPlaceholderImporter.Controllers
 {
@@ -76,8 +77,22 @@ namespace JsonPlaceholderImporter.Controllers
         // POST: api/Comments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Comment>> PostComment(Comment comment)
+        public async Task<ActionResult<Comment>> PostComment(CommentCreateDto dtoComment)
         {
+
+            var name = (dtoComment.Name ?? "").Trim();
+            var email = (dtoComment.Email ?? "").Trim().ToLower();
+            var body = (dtoComment.Body ?? "").Trim().ToLower();
+
+            var comment = new Comment 
+            {
+                PostId = dtoComment.postId,
+                Name = name,
+                Email = email,
+                Body = body
+            };
+
+
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 

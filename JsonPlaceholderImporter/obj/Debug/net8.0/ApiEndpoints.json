@@ -137,8 +137,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "comment",
-        "Type": "JsonPlaceholderImporter.Models.Comment",
+        "Name": "dtoComment",
+        "Type": "JsonPlaceholderImporter.Dtos.CommentCreateDto",
         "IsRequired": true
       }
     ],
