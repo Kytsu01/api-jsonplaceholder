@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JsonPlaceholderImporter.Context;
 using JsonPlaceholderImporter.Models;
+using JsonPlaceholderImporter.Dtos;
 
 namespace JsonPlaceholderImporter.Controllers
 {
@@ -77,8 +78,18 @@ namespace JsonPlaceholderImporter.Controllers
         // POST: api/Albums
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Album>> PostAlbum(Album album)
+        public async Task<ActionResult<Album>> PostAlbum(AlbumCreateDto dtoAlbum)
         {
+
+            var title = (dtoAlbum.Title ?? "").Trim();
+
+            var album = new Album 
+            {
+                UserId = dtoAlbum.UserId,
+                Title = title
+            };
+
+
             _context.Albums.Add(album);
             await _context.SaveChangesAsync();
 

@@ -50,17 +50,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Album"
+                "$ref": "#/components/schemas/AlbumCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Album"
+                "$ref": "#/components/schemas/AlbumCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Album"
+                "$ref": "#/components/schemas/AlbumCreateDto"
               }
             }
           }
@@ -1311,6 +1311,20 @@
             "items": {
               "$ref": "#/components/schemas/Photo"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlbumCreateDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
             "nullable": true
           }
         },
