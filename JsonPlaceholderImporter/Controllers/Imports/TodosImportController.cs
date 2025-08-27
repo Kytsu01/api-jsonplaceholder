@@ -1,7 +1,10 @@
 ﻿using JsonPlaceholderImporter.Context;
+using JsonPlaceholderImporter.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Security.Policy;
+using System.Text.Json;
 
 namespace JsonPlaceholderImporter.Controllers.Imports
 {
@@ -15,6 +18,40 @@ namespace JsonPlaceholderImporter.Controllers.Imports
         public TodosImportController(AppDbContext context   )
         {
             _context = context;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Import()
+        {
+
+            const string url = "https://jsonplaceholder.typicode.com/todos";
+
+            using var http = new HttpClient();
+            var json = await http.GetStringAsync(url);
+
+            var todos = JsonSerializer.Deserialize<List<ApiTodos>>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            int added = 0;
+
+            foreach(var todo in todos)
+            {
+                var entity = new Todo
+                {
+                    UserId = todo.UserId,
+                    Title = todo.Title ?? string.Empty,
+                    Completed = todo.Completed
+                };
+
+                _context.Todos.Add(entity);
+                added++;
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok(new { added });
+
         }
 
         internal class ApiTodos 

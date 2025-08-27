@@ -1384,7 +1384,7 @@
             "type": "string",
             "nullable": true
           },
-          "isFinished": {
+          "completed": {
             "type": "boolean"
           },
           "userId": {
