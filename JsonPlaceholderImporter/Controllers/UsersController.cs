@@ -50,6 +50,18 @@ namespace JsonPlaceholderImporter.Controllers
             return user;
         }
 
+        [HttpGet("post-count")]
+        public async Task<IActionResult> GetUsersWithPostCount()
+        {
+            var sql = @"SELECT u.Id AS UserId, U.Name, COUNT(p.Id) AS PostCount
+                        FROM Users u LEFT JOIN Posts p ON p.UserId = u.Id
+                        GROUP BY u.Id, u.Name ORDER BY PostCount DESC, u.Name";
+
+            var data = await _context.UserPostCounts.FromSqlRaw(sql).ToListAsync();
+
+            return Ok(data);
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

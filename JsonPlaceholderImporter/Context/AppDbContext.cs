@@ -19,6 +19,12 @@ namespace JsonPlaceholderImporter.Context
         public DbSet<Album> Albums { get; set; } = null!;
         public DbSet<Photo> Photos { get; set; } = null!;
         public DbSet<Todo> Todos {  get; set; } = null!;
+        public DbSet<UserPostCount> UserPostCounts => Set<UserPostCount>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserPostCount>().HasNoKey();
+        }
 
     }
 }

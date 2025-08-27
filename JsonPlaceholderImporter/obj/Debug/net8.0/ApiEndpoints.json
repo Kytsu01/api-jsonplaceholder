@@ -722,5 +722,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JsonPlaceholderImporter.Controllers.UsersController",
+    "Method": "GetUsersWithPostCount",
+    "RelativePath": "api/Users/post-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
