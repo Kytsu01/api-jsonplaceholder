@@ -399,6 +399,18 @@
         }
       }
     },
+    "/api/import/all": {
+      "post": {
+        "tags": [
+          "ImportAll"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Photos": {
       "get": {
         "tags": [

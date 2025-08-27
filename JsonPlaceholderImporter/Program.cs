@@ -10,6 +10,16 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
     );
 
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<JsonPlaceholderImporter.Controllers.Imports.UsersImportController>();
+builder.Services.AddScoped<JsonPlaceholderImporter.Controllers.Imports.PostsImporterController>();
+builder.Services.AddScoped<JsonPlaceholderImporter.Controllers.Imports.CommentsImportController>();
+builder.Services.AddScoped<JsonPlaceholderImporter.Controllers.Imports.AlbumsImportController>();
+builder.Services.AddScoped<JsonPlaceholderImporter.Controllers.Imports.PhotosImportController>();
+builder.Services.AddScoped<JsonPlaceholderImporter.Controllers.Imports.TodosImportController>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

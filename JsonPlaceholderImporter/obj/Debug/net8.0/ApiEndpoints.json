@@ -228,6 +228,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "JsonPlaceholderImporter.Controllers.Imports.ImportAllController",
+    "Method": "ImportAll",
+    "RelativePath": "api/import/all",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "JsonPlaceholderImporter.Controllers.Imports.CommentsImportController",
     "Method": "Import",
     "RelativePath": "api/import/comments",
