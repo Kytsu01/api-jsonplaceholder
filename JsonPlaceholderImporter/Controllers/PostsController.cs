@@ -23,9 +23,20 @@ namespace JsonPlaceholderImporter.Controllers
 
         // GET: api/Posts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+        public async Task<ActionResult<IEnumerable<Post>>> GetPosts(
+            [FromQuery] int page = 1, [FromQuery] int pageSize = 20, [FromQuery] int? UserId = null)
         {
-            return await _context.Posts.Include(p => p.Comments).ToListAsync();
+
+            var q = _context.Posts.AsNoTracking().AsQueryable();
+
+            q = q.Where(p => p.UserId == UserId.Value);
+            
+
+            var total = await q.CountAsync();
+
+            var items = await q.OrderBy(p => p.Id).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return Ok(new { total, page, pageSize, items });
         }
 
         // GET: api/Posts/5
