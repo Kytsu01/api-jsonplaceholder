@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JsonPlaceholderImporter.Context;
 using JsonPlaceholderImporter.Models;
+using JsonPlaceholderImporter.Dtos;
+using Microsoft.JSInterop.Infrastructure;
 
 namespace JsonPlaceholderImporter.Controllers
 {
@@ -96,8 +98,60 @@ namespace JsonPlaceholderImporter.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser([FromBody] UserCreateDto dto)
         {
+            var email = (dto.Email ?? "").Trim().ToLower();
+            var name = (dto.Name ?? "").Trim();
+            var username = (dto.Username ?? "").Trim();
+            var phone = (dto.Phone ?? "").Trim();
+            var website = (dto.Website ?? "").Trim().ToLower();
+
+            var street = (dto.Address.Street ?? "").Trim();
+            var city = (dto.Address.City ?? "").Trim();
+            var zipCode = (dto.Address.ZipCode ?? "").Trim();
+
+            var lat = (dto.Address.Geo.Lat ?? "").Trim();
+            var lng = (dto.Address.Geo.Lng ?? "").Trim();
+
+            var cmpName = (dto.Company.Name ?? "").Trim();
+            var catchPhrase = (dto.Company.CatchPhrase ?? "").Trim();
+            var bs = (dto.Company.Bs ?? "").Trim();
+
+            var user = new User 
+            {
+                Name = name,
+                UserName = username,
+                Email = email,
+                Phone = phone,
+                Website = website
+            };
+
+            if (dto.Address != null)
+            {
+                user.Address = new Address
+                {
+                    Street = street,
+                    City = city,
+                    ZipCode = zipCode,
+                    Geo = dto.Address.Geo is null ? null : new Geolocation
+                    {
+                        Lat = lat,
+                        Lng = lng
+                    }
+                };
+            }
+
+            if(dto.Company != null)
+            {
+                user.Company = new Company 
+                {
+                    Name = cmpName,
+                    CatchPhrase = catchPhrase,
+                    Bs = bs
+                };
+
+            }
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

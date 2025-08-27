@@ -1075,17 +1075,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateDto"
               }
             }
           }
@@ -1267,6 +1267,27 @@
         },
         "additionalProperties": false
       },
+      "AddressCreateDto": {
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "geo": {
+            "$ref": "#/components/schemas/GeolocationCreateDto"
+          }
+        },
+        "additionalProperties": false
+      },
       "Album": {
         "type": "object",
         "properties": {
@@ -1346,6 +1367,24 @@
         },
         "additionalProperties": false
       },
+      "CompanyCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "catchPhrase": {
+            "type": "string",
+            "nullable": true
+          },
+          "bs": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Geolocation": {
         "type": "object",
         "properties": {
@@ -1353,6 +1392,20 @@
             "type": "integer",
             "format": "int32"
           },
+          "lat": {
+            "type": "string",
+            "nullable": true
+          },
+          "lng": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeolocationCreateDto": {
+        "type": "object",
+        "properties": {
           "lat": {
             "type": "string",
             "nullable": true
@@ -1502,6 +1555,38 @@
               "$ref": "#/components/schemas/Album"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressCreateDto"
+          },
+          "company": {
+            "$ref": "#/components/schemas/CompanyCreateDto"
           }
         },
         "additionalProperties": false

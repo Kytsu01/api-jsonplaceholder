@@ -659,8 +659,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "JsonPlaceholderImporter.Models.User",
+        "Name": "dto",
+        "Type": "JsonPlaceholderImporter.Dtos.UserCreateDto",
         "IsRequired": true
       }
     ],
