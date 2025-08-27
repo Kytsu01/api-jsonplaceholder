@@ -681,17 +681,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Post"
+                "$ref": "#/components/schemas/PostCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Post"
+                "$ref": "#/components/schemas/PostCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Post"
+                "$ref": "#/components/schemas/PostCreateDto"
               }
             }
           }
@@ -1473,6 +1473,24 @@
             "items": {
               "$ref": "#/components/schemas/Comment"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PostCreateDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "body": {
+            "type": "string",
             "nullable": true
           }
         },

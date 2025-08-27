@@ -431,8 +431,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "post",
-        "Type": "JsonPlaceholderImporter.Models.Post",
+        "Name": "dtoPost",
+        "Type": "JsonPlaceholderImporter.Dtos.PostCreateDto",
         "IsRequired": true
       }
     ],
