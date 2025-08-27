@@ -190,6 +190,18 @@
         }
       }
     },
+    "/api/import/albums": {
+      "post": {
+        "tags": [
+          "AlbumsImport"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Comments": {
       "get": {
         "tags": [

@@ -218,6 +218,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "JsonPlaceholderImporter.Controllers.Imports.AlbumsImportController",
+    "Method": "Import",
+    "RelativePath": "api/import/albums",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "JsonPlaceholderImporter.Controllers.Imports.CommentsImportController",
     "Method": "Import",
     "RelativePath": "api/import/comments",
