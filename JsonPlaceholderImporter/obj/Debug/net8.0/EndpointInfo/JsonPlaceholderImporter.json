@@ -1260,9 +1260,6 @@
           "zipCode": {
             "type": "string",
             "nullable": true
-          },
-          "geo": {
-            "$ref": "#/components/schemas/Geolocation"
           }
         },
         "additionalProperties": false
@@ -1305,13 +1302,6 @@
           },
           "user": {
             "$ref": "#/components/schemas/User"
-          },
-          "photos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Photo"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1352,9 +1342,6 @@
           "postId": {
             "type": "integer",
             "format": "int32"
-          },
-          "post": {
-            "$ref": "#/components/schemas/Post"
           }
         },
         "additionalProperties": false
@@ -1421,24 +1408,6 @@
         },
         "additionalProperties": false
       },
-      "Geolocation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "lat": {
-            "type": "string",
-            "nullable": true
-          },
-          "lng": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "GeolocationCreateDto": {
         "type": "object",
         "properties": {
@@ -1475,9 +1444,6 @@
           "albumId": {
             "type": "integer",
             "format": "int32"
-          },
-          "album": {
-            "$ref": "#/components/schemas/Album"
           }
         },
         "additionalProperties": false
@@ -1571,9 +1537,6 @@
           "userId": {
             "type": "integer",
             "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false
@@ -1627,27 +1590,6 @@
           },
           "company": {
             "$ref": "#/components/schemas/Company"
-          },
-          "posts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Post"
-            },
-            "nullable": true
-          },
-          "todos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Todo"
-            },
-            "nullable": true
-          },
-          "albums": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Album"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false

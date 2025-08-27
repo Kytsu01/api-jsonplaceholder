@@ -1,4 +1,6 @@
-﻿namespace JsonPlaceholderImporter.Models
+﻿using System.Text.Json.Serialization;
+
+namespace JsonPlaceholderImporter.Models
 {
     public class Photo
     {
@@ -8,6 +10,7 @@
         public string ThumbnailUrl { get; set; } = string.Empty;
 
         public int AlbumId { get; set; }
+        [JsonIgnore]
         public Album? Album { get; set; }
     }
 }

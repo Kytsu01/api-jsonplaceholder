@@ -1,4 +1,6 @@
-﻿namespace JsonPlaceholderImporter.Models
+﻿using System.Text.Json.Serialization;
+
+namespace JsonPlaceholderImporter.Models
 {
     public class Todo
     {
@@ -7,6 +9,7 @@
         public bool Completed { get; set; }
 
         public int UserId { get; set; }
+        [JsonIgnore]
         public User? User { get; set; }
 
     }

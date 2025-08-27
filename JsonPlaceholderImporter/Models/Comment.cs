@@ -1,4 +1,6 @@
-﻿namespace JsonPlaceholderImporter.Models
+﻿using System.Text.Json.Serialization;
+
+namespace JsonPlaceholderImporter.Models
 {
     public class Comment
     {
@@ -8,6 +10,7 @@
         public string Body { get; set; } = string.Empty;
 
         public int PostId { get; set; }
+        [JsonIgnore]
         public Post? Post { get; set; }
     }
 }

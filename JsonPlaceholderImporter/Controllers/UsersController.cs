@@ -27,11 +27,11 @@ namespace JsonPlaceholderImporter.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users
+            var user = await _context.Users
                 .Include(u => u.Address).ThenInclude(a => a.Geo)
-                .Include(u => u.Company).Include(u => u.Posts)
-                .Include(u => u.Albums).ThenInclude(a => a.Photos)
-                .Include(u => u.Todos).ToListAsync();
+                .Include(u => u.Company).ToListAsync();
+
+            return user;
         }
 
         // GET: api/Users/5

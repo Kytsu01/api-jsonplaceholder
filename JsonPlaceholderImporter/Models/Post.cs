@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Text.Json.Serialization;
 
 namespace JsonPlaceholderImporter.Models
 {
@@ -10,7 +11,6 @@ namespace JsonPlaceholderImporter.Models
 
         public int UserId { get; set; }
         public User? User { get; set; }
-
 
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
