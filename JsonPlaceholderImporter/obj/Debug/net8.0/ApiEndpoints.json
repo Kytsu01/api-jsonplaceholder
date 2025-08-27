@@ -595,6 +595,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "JsonPlaceholderImporter.Controllers.Imports.TodosImportController",
+    "Method": "Import",
+    "RelativePath": "api/TodosImport",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "JsonPlaceholderImporter.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",

@@ -978,6 +978,18 @@
         }
       }
     },
+    "/api/TodosImport": {
+      "post": {
+        "tags": [
+          "TodosImport"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users": {
       "get": {
         "tags": [
