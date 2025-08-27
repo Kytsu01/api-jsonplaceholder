@@ -24,9 +24,24 @@ namespace JsonPlaceholderImporter.Controllers
 
         // GET: api/Albums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums(
+            [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
         {
-            return await _context.Albums.Include(a => a.Photos).ToListAsync();
+            
+            var q = _context.Albums.AsNoTracking();
+
+            var total = await q.CountAsync();
+
+            var items = await q.OrderBy(a => a.Id).Skip((page - 1) *  pageSize)
+                        .Take(pageSize).Select(a => new
+                        {
+                            a.Id,
+                            a.Title,
+                            a.UserId,
+                            PhotoCount = a.Photos.Count
+                        }).ToListAsync();
+
+            return Ok(new { total, page, pageSize, items });
         }
 
         // GET: api/Albums/5
