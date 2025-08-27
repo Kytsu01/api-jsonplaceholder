@@ -540,8 +540,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "todo",
-        "Type": "JsonPlaceholderImporter.Models.Todo",
+        "Name": "dtoTodo",
+        "Type": "JsonPlaceholderImporter.Dtos.TodoCreateDto",
         "IsRequired": true
       }
     ],

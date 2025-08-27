@@ -878,17 +878,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Todo"
+                "$ref": "#/components/schemas/TodoCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Todo"
+                "$ref": "#/components/schemas/TodoCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Todo"
+                "$ref": "#/components/schemas/TodoCreateDto"
               }
             }
           }
@@ -1516,6 +1516,23 @@
           },
           "user": {
             "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TodoCreateDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "completed": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

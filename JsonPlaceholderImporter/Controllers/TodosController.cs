@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JsonPlaceholderImporter.Context;
 using JsonPlaceholderImporter.Models;
+using JsonPlaceholderImporter.Dtos;
 
 namespace JsonPlaceholderImporter.Controllers
 {
@@ -76,8 +77,19 @@ namespace JsonPlaceholderImporter.Controllers
         // POST: api/Todos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Todo>> PostTodo(Todo todo)
+        public async Task<ActionResult<Todo>> PostTodo(TodoCreateDto dtoTodo)
         {
+
+            var title = (dtoTodo.Title ?? "").Trim();
+
+            var todo = new Todo 
+            {
+                UserId = dtoTodo.UserId,
+                Title = title,
+                Completed = dtoTodo.Completed
+            };
+
+
             _context.Todos.Add(todo);
             await _context.SaveChangesAsync();
 
