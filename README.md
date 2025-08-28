@@ -72,6 +72,39 @@ Disponibiliza endpoints de importação, CRUD básicos e listas paginadas. Há t
 
 - `GET /api/photos?page=1&pageSize=20 — lista paginada de fotos`
 
+### Como atualizar (PUT) — ID na rota **e** no corpo
+
+Para evitar atualizações no recurso errado, o `PUT` exige **ID na URL** e **o mesmo ID no corpo**.
+Se os IDs não coincidirem, a API retorna **400 Bad Request**.
+
+Exemplo (Users):
+- Rota: `PUT /api/users/5`
+- Body:
+
+        
+  
+        {
+          "id": 5,
+          "name": "Leanne Graham",
+          "username": "Bret",
+          "email": "sincere@april.biz",
+          "phone": "1-770-736-8031 x56442",
+          "website": "hildegard.org",
+          "address": {
+            "street": "Kulas Light",
+            "city": "Gwenborough",
+            "zipCode": "92998-3874",
+            "geo": { "lat": "-37.3159", "lng": "81.1496" }
+          },
+          "company": {
+            "name": "Romaguera-Crona",
+            "catchPhrase": "…",
+            "bs": "…"
+          }
+        }
+  
+        
+
 ### RAW SQL (exemplo)
 
 - `GET /api/users/post-count` — usuários com contagem de posts via `FromSqlRaw`.
