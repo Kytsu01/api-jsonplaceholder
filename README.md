@@ -29,7 +29,7 @@ Disponibiliza endpoints de importação, CRUD básicos e listas paginadas. Há t
 2. Subir a API:
     ```
     
-    dotnet run
+    dotnet run --project ./JsonPlaceholderImporter/JsonPlaceholderImporter.csproj
 
     ```
 
