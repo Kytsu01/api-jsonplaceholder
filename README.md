@@ -22,7 +22,7 @@ Disponibiliza endpoints de importação, CRUD básicos e listas paginadas. Há t
     ```
     
     cd JsonPlaceholderImporter
-    dotnet ef database update
+    dotnet ef database update --project ./JsonPlaceholderImporter/JsonPlaceholderImporter.csproj
 
     ```
 
