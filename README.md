@@ -58,17 +58,17 @@ Disponibiliza endpoints de importação, CRUD básicos e listas paginadas. Há t
 
 ### Endpoints de leitura (paginação)
 
-- `GET /api/users?page=1&pageSize=20 — lista paginada leve (contagens em vez de coleções grandes)`
+- `GET /api/users`
 
 - `GET /api/users/{id:int} — detalhe do usuário`
 
-- `GET /api/users/{id:int} — posts do usuário`
+- `GET /api/users/post-count — posts do usuário`
 
 - `GET /api/posts?page=1&pageSize=20 — lista paginada de posts`
 
 - `GET /api/albums?page=1&pageSize=20 — lista paginada de álbuns`
 
-- `GET /api/albums/{id:int} — fotos de um álbum`
+- `GET /api/albums/{id:int} — detalhe de um álbum`
 
 - `GET /api/photos?page=1&pageSize=20 — lista paginada de fotos`
 
@@ -100,7 +100,7 @@ Para deixar o Swagger limpo, os POSTs usam DTOs. Exemplo (`POST /api/users`):
       }
     }
     
-    ```
+    
 
 ### Processamento/normalização
 
