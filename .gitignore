@@ -1,1 +1,14 @@
 .vs/
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+TestResults/
+*.log
+*.mdf
+*.ldf
+*.sqlite
+appsettings.*.local.json
+secrets.json
